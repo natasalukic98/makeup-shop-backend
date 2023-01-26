@@ -19,6 +19,10 @@ public class Order {
     private Long id;
     private Date date;
     private Double sum;
+    private String address;
+
+    private String phoneNumber;
+
     @ManyToOne()
     @JoinColumn(name="user_id")
     private User user;

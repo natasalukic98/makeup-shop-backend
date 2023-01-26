@@ -20,7 +20,6 @@ public class MakeupItem {
 
     private String name;
     private double price;
-    private Integer amount;
     private String description;
     private String image;
 
