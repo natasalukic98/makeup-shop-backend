@@ -20,7 +20,7 @@ public class MakeupItemController {
     private final MakeupItemService makeupItemService;
 
     @GetMapping
-    @PreAuthorize("hasRole('admin')")
+    @PreAuthorize("hasRole('user')")
     public ResponseEntity<List<MakeupItem>>findAllMakeupItems(){
         return new ResponseEntity<>(makeupItemService.getAll(), HttpStatus.OK);
     }
