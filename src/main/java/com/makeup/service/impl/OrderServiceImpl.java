@@ -33,7 +33,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Order createOrder(Order order) {
 
-        order.setUser(getUser(order));
+        order.setUser(getUserByOrder(order));
         order.setDeliveryType(deliveryTypeRepository.findByDelivery(order.getDeliveryType().getDelivery()).get());
         order.setSum(calculateSum(order));
         order.setDate(new Date());
@@ -45,7 +45,7 @@ public class OrderServiceImpl implements OrderService {
         return order.getOrderItems().stream().mapToDouble(orderItem ->orderItem.getAmount()*orderItem.getMakeupItem().getPrice()).sum();
     }
 
-    private User getUser(Order order){
+    private User getUserByOrder(Order order){
         return userRepository.findByEmail(order.getUser().getEmail()).orElse( userRepository.save(order.getUser()));
     }
 
