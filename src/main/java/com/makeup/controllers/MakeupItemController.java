@@ -6,6 +6,7 @@ import com.makeup.service.MakeupItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,6 +20,7 @@ public class MakeupItemController {
     private final MakeupItemService makeupItemService;
 
     @GetMapping
+    @PreAuthorize("hasRole('admin')")
     public ResponseEntity<List<MakeupItem>>findAllMakeupItems(){
         return new ResponseEntity<>(makeupItemService.getAll(), HttpStatus.OK);
     }
